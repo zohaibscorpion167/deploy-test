@@ -7,11 +7,7 @@ from .forms import UserForm
 from home.models import Contact
 from django.contrib import messages
 import pyshorteners
-import os
-import socket
-import re
-import json
-from urllib.request import urlopen
+
 
 
 
