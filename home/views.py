@@ -24,14 +24,6 @@ def index(request):
 
 
 
-def urlShort(request):
-    global url
-    if request.method == 'POST':
-        url = request.POST['url']
-        url = pyshorteners.Shortener().tinyurl.short(url)
-        return render(request, 'urlshort.html', {'url':url})
-    else:
-        return render(request, 'urlshort.html')
 
 
 def contact(request):
