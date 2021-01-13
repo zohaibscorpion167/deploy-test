@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 from .forms import UserForm
 from home.models import Contact
 from django.contrib import messages
-import pyshorteners
+from PyPDF2 import PdfFileReader, PdfFileWriter
+
 
 
 
@@ -20,9 +21,6 @@ url = None
 def index(request):
     context = {"home": "active"}
     return render(request, 'index.html', context)
-
-
-
 
 
 
@@ -77,7 +75,33 @@ def handlelogout(request):
     return redirect('login')
 
 
-    
+
+
+def pdf_to_txt(request):
+    if request.method == "POST":
+        p = request.FILES['pdf']
+        # file_path = 'C:\\Users\\AA\\Desktop\\sample.pdf'
+        pdf = PdfFileReader(p)
+        with open('static/yourtxt.txt', 'w') as f:
+            for page_num in range(pdf.numPages):
+                # print('Page: {0}'.format(page_num))
+                pageObj = pdf.getPage(page_num)
+        
+                try: 
+                    txt = pageObj.extractText()
+                    # print(''.center(100, '-'))
+                except:
+                    pass
+                else:
+                    f.write('\n')
+                    f.write(''.center(100, '-'))
+                    f.write('\n')
+                    f.write('Page {0}\n'.format(page_num+1))
+                    f.write(txt)
+            f.close()
+        return render(request, 'pdf_to_txt.html',{'f':f})
+    else:
+        return render(request, 'pdf_to_txt.html')
 
 
         

@@ -34,43 +34,7 @@
   display: inline-block;
 }
 
-#logos .speedometer {
-  width: 120px;
-  height: 120px;
-  border-radius: 100%;
-  border: 20px solid purple;
-  border-right: 20px solid white;
-  border-bottom: 20px solid white;
-  transform: rotate(45deg);
-  display: inline-block;
-}
-#logos .needle {
-  width: 5px;
-  height: 90px;
-  background: #999999;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-top-left-radius: 100%;
-  border-top-right-radius: 100%;
-  display: inline-block;
-  left: 70px;
-  position: absolute;
-  top: 10px;
-  animation: move 5s infinite;
-  transform: rotate(0deg);
-  transform-origin: bottom;
-}
-@keyframes move {
-  0% {
-    transform: rotate(-90deg);
-  }
-  50% {
-    transform: rotate(90deg);
-  }
-  100% {
-    transform: rotate(-90deg);
-  }
-}
+
 .map-container-3{
   overflow:hidden;
   padding-bottom:56.25%;
@@ -258,7 +222,7 @@ a:active {
   background-image: url('/static/backdrop.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 80%;
+  height: auto;
   font-family: 'Numans', sans-serif;
   display: flex;
   justify-content: center;
@@ -273,13 +237,11 @@ align-content: center;
 }
 
 .card-log{
-height: 370px;
 margin-top: auto;
 margin-bottom: auto;
 background-color: rgba(0,0,0,0.5) !important;
 }
 .card-sign{
-  height: 500px;
   margin-top: auto;
   margin-bottom: auto;
   background-color: rgba(0,0,0,0.5) !important;
@@ -368,4 +330,24 @@ th,td {
 {
   table-layout: fixed;
   width: 100%;
+  }
+
+  
+  .center{
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .card-log{
+      width: auto;
+      }
+      .card-sign{
+     
+        width: auto;
+     
+        }
+      
   }
