@@ -4,9 +4,9 @@ from django.core.files import File
 
 # Create your models here.
 class Contact(models.Model):
-    name = models.CharField(max_length=124)
-    email = models.CharField(max_length=124)
-    phone = models.CharField(max_length=12)
+    name = models.CharField(max_length=124, null=False, blank=False)
+    email = models.CharField(max_length=124, null=False, blank=False)
+    phone = models.CharField(max_length=12, null=False, blank=False)
     desc = models.TextField()
     date = models.DateField()
 

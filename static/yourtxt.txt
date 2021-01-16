@@ -1,7 +1,348 @@
 
 ----------------------------------------------------------------------------------------------------
 Page 1
- A Simple PDF File  This is a small demonstration .pdf file -  just for use in the Virtual Mechanics tutorials. More text. And more  text. And more text. And more text. And more text.  And more text. And more text. And more text. And more text. And more  text. And more text. Boring, zzzzz. And more text. And more text. And  more text. And more text. And more text. And more text. And more text.  And more text. And more text.  And more text. And more text. And more text. And more text. And more  text. And more text. And more text. Even more. Continued on page 2 ...
+Super key & Primary Key
+ 
+Suppose that we denote one such subset of attributes by SK, then for any two distinct tuples t
+1
+ 
+and t
+2
+ 
+in a relation state r of R, we have the constraints, that;
+ 
+ 
+ 
+t
+1
+
+2
+[SK]
+ 
+Any such subset of attributes SK is called a Super key of the relation schema R. A super key SK 
+specifies a uniqueness constraints that no two distant tuples in any state r of R can have the 
+same value of SK. Every relation has at least 
+one default super key
+---
+ 
+the set of all its attributes
+.
+ 
+It is common to designate one of the super key as Primary key (PK) of the relation.
+ 
+Foreign Key
+ 
+A subset of attributes FK in relation schema R
+1
+ 
+is a foreign key of R
+1
+ 
+that reference relation R
+2
+ 
+if 
+it 
+satisfies the following rules:
+ 
+1
+-
+ 
+The attributes in FK have the same domain as the primary key attributes PK of R
+2
+; the 
+attributes FK are said to be reference or refers to the relation R
+2
+ 
+2
+-
+ 
+A value of FK in a tuple t
+1
+ 
+of the current state r
+1
+(R
+1
+) either occurs 
+as a value of PK for 
+some tuple t
+2
+ 
+in the current state r
+2
+(R
+2
+). In the former case, we have
+ 
+t
+1
+[
+F
+K]  
+=
+ 
+t
+2
+[
+P
+K]
+ 
+ 
+and we say that the tuple t
+1
+ 
+reference or refers to the tuple t
+2
+.
+ 
+
 ----------------------------------------------------------------------------------------------------
 Page 2
- Simple PDF File 2  ...continued from page 1. Yet more text. And more text. And more text.  And more text. And more text. And more text. And more text. And more  text. Oh, how boring typing this stuff. But not as boring as watching  paint dry. And more text. And more text. And more text. And more text.  Boring.  More, a little more text. The end, and just as well. 
+ 
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 3
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 4
+ 
+
+ 
+Database Normalization is a technique of org
+anizing the data in the database. Normalization is 
+a systematic approach of decomposing tables to eliminate data redundancy(repetition) and 
+undesirable characteristics like Insertion, Update and Deletion Anomalies. It is a multi
+-
+step 
+process that puts data
+ 
+into tabular form, removing duplicated data from the relation tables.
+ 
+Normalization is used for mainly two purposes,
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 5
+
+ 
+Eliminating redundant (useless) data.
+ 
+
+ 
+Ensuring data dependencies make sense i.e data is logically stored.
+ 
+Problems without Normalization
+ 
+If a table is not properly normalized and have data redundancy then it will not only eat up extra 
+memory space but will also make it difficult to handle and update the database, without facing 
+data loss. Insertion, Updation and Deletion Anomalies are very 
+frequent if database is not 
+normalized. To understand these anomalies let us take an example of a 
+Student
+ 
+table.
+ 
+rollno
+ 
+name
+ 
+branch
+ 
+hod
+ 
+office_tel
+ 
+401
+ 
+Akon
+ 
+CSE
+ 
+Mr. X
+ 
+53337
+ 
+402
+ 
+Bkon
+ 
+CSE
+ 
+Mr. X
+ 
+53337
+ 
+403
+ 
+Ckon
+ 
+CSE
+ 
+Mr. X
+ 
+53337
+ 
+404
+ 
+Dkon
+ 
+CSE
+ 
+Mr. X
+ 
+53337
+ 
+In the table above, we have data of 4 Computer Sci. students. As we can see, data for the fields 
+branch
+, 
+hod
+(Head of Department) and 
+office_tel
+ 
+is repeated for the students who are in the 
+same branch in the college, this is 
+Data Redundancy
+.
+ 
+Insertion 
+Anomaly
+ 
+Suppose for a new admission, until and unless a student opts for a branch, data of the student 
+cannot be inserted, or else we will have to set the branch information as 
+NULL
+.
+ 
+Also, if we have to insert data of 100 students of same branch, then the 
+branch information will 
+be repeated for all those 100 students.
+ 
+These scenarios are nothing but 
+Insertion anomalies
+.
+ 
+ 
+Updation Anomaly
+ 
+What if Mr. X leaves the college? or is no longer the HOD of computer science department? In 
+that case all the student 
+records will have to be updated, and if by mistake we miss any record, it 
+will lead to data inconsistency. This is Updation anomaly.
+ 
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 6
+Deletion Anomaly
+ 
+In our 
+Student
+ 
+table, two different information are kept together, Student information and 
+Branch inform
+ation. Hence, at the end of the academic year, if student records are deleted, we 
+will also lose the branch information. This is Deletion anomaly.
+ 
+Normalization Rule
+ 
+Normalization rules are divided into the following normal forms:
+ 
+1.
+ 
+First Normal Form
+ 
+2.
+ 
+Second 
+Normal Form
+ 
+3.
+ 
+Third Normal Form
+ 
+4.
+ 
+BCNF
+ 
+5.
+ 
+Fourth Normal Form
+ 
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 7
+
+----------------------------------------------------------------------------------------------------
+Page 8
+
+----------------------------------------------------------------------------------------------------
+Page 9
+
+----------------------------------------------------------------------------------------------------
+Page 10
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 11
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 12
+ 
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 13
+
+----------------------------------------------------------------------------------------------------
+Page 14
+
+----------------------------------------------------------------------------------------------------
+Page 15
+
+----------------------------------------------------------------------------------------------------
+Page 16
+
+----------------------------------------------------------------------------------------------------
+Page 17
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 18
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 19
+
+----------------------------------------------------------------------------------------------------
+Page 20
+ 
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 21
+
+----------------------------------------------------------------------------------------------------
+Page 22
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 23
+
+----------------------------------------------------------------------------------------------------
+Page 24
+ 
+ 
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 25
+ 
+
+----------------------------------------------------------------------------------------------------
+Page 26
+ 
+ 

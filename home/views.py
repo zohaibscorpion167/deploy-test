@@ -7,10 +7,38 @@ from .forms import UserForm
 from home.models import Contact
 from django.contrib import messages
 from PyPDF2 import PdfFileReader, PdfFileWriter
+from django.core.files import File
+import os
+from django.shortcuts import render, HttpResponse
+from rest_framework import status
+from rest_framework.views import APIView
+from .models import Contact
+from .serializers import RestaurantSerializer
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.parsers import JSONParser
 
 
 
 
+class RestaurantApiView(APIView):
+    # authentication_classes = [TokenAuthentication]
+    # permission_classes = [IsAuthenticated]
+    parser_classes = [JSONParser]
+    def get(self, request):
+        restaurants= Contact.objects.all()
+        serializer = RestaurantSerializer(restaurants, many=True)
+        return Response(serializer.data)
+
+
+    def post(self, request):
+        serializer = RestaurantSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 data = None
@@ -82,7 +110,8 @@ def pdf_to_txt(request):
         p = request.FILES['pdf']
         # file_path = 'C:\\Users\\AA\\Desktop\\sample.pdf'
         pdf = PdfFileReader(p)
-        with open('static/yourtxt.txt', 'w') as f:
+        with open(os.path.join('static/yourtxt.txt'), 'w') as f:
+            f = File(f)
             for page_num in range(pdf.numPages):
                 # print('Page: {0}'.format(page_num))
                 pageObj = pdf.getPage(page_num)
@@ -98,7 +127,7 @@ def pdf_to_txt(request):
                     f.write('\n')
                     f.write('Page {0}\n'.format(page_num+1))
                     f.write(txt)
-            f.close()
+            f.closed
         return render(request, 'pdf_to_txt.html',{'f':f})
     else:
         return render(request, 'pdf_to_txt.html')
@@ -107,3 +136,8 @@ def pdf_to_txt(request):
         
 
 
+# with open('/path/to/hello.world', 'w') as f:
+# ...     myfile = File(f)
+# ...     myfile.write('Hello World')
+# ...
+# >>> myfile.closed

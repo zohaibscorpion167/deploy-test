@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+     'import_export',
+     'rest_framework.authtoken',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +141,16 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'zohaibscorpion167@gmail.com'
 EMAIL_HOST_PASSWORD = 'zohaibisthebest'
+
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+MEDIA_URL ='/media/'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ]
+}
